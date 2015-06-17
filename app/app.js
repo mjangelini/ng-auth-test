@@ -5,8 +5,15 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.view1',
   'myApp.view2',
-  'myApp.version'
+  'myApp.version',
+  'ng-token-auth'
 ]).
-config(['$routeProvider', function($routeProvider) {
+config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
+
   $routeProvider.otherwise({redirectTo: '/view1'});
+
+  $authProvider.configure({
+    apiUrl: 'http://api.example.com'
+  });
+
 }]);
